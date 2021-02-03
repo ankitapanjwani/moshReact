@@ -7,13 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import $ from  'jquery';
 // import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Counter from './components/counter';
+import Counters from './components/counters';
 import 'font-awesome/css/font-awesome.css';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Counter></Counter>
+    <Counters></Counters>
   </React.StrictMode>,
   document.getElementById('root')
 );

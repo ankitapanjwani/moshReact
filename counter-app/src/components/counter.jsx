@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags:['tag1','tag2','tag3']
+    value: this.props.value,
+    // tags:['tag1','tag2','tag3']
      // imgUrl: 'https://picsum.photos/200'
   };
 
@@ -24,15 +24,17 @@ class Counter extends Component {
 
     handleIncrement = () =>{
 
-        this.setState({count: this.state.count + 1})
+        this.setState({value: this.state.count + 1})
         
         // console.log("Increment Clicked", this);
     }
 
   render() {
+
+    console.log('props', this.props);
     return (
       <React.Fragment>
-        <h1 style={this.heading}>Counter App!!</h1>
+        {/* <h1 style={this.heading}>Counter App!!</h1> */}
         {/* <span class="ml-5">{this.state.count}</span> */}
         <div className="container mt-5">
           <div className="row">
@@ -40,8 +42,8 @@ class Counter extends Component {
               <span className={this.getBadgeClasses()} style={this.styles}>
                 {this.formatCount()}
               </span>
-              {this.state.tags.length ===0 && 'Please add a new tag...'}
-                {this.rendertags()}
+              {/* {this.state.tags.length ===0 && 'Please add a new tag...'} */}
+                {/* {this.rendertags()} */}
 
             </div>
             <div className="col-md-4">
@@ -67,13 +69,13 @@ class Counter extends Component {
     return count === 0 ? x : count;
   }
 
-  rendertags(){
-      if(this.state.tags.length === 0) return <p>There are no tags available!</p>
+//   rendertags(){
+//       if(this.state.tags.length === 0) return <p>There are no tags available!</p>
 
-      return <ul>
-      {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
-  </ul>
-  }
+//       return <ul>
+//       {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+//   </ul>
+//   }
 }
 
 export default Counter;
