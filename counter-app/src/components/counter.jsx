@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    value: this.props.value,
-    // tags:['tag1','tag2','tag3']
-     // imgUrl: 'https://picsum.photos/200'
-  };
+  
+
 
   styles = {
     fontSize: 25,
@@ -16,27 +13,30 @@ class Counter extends Component {
     textAlign: "center"
   };
 
+
 //   use callback unction to get value of this in event handlers
         //   constructor(){
         //       super();
         //       this.handleIncrement = this.handleIncrement.bind(this);
         //   }
 
-    handleIncrement = () =>{
-
-        this.setState({value: this.state.count + 1})
+    // handleIncrement = () =>{
+   
+    //     this.setState({value: this.state.value + 1})
         
-        // console.log("Increment Clicked", this);
-    }
-
+    //     // console.log("Increment Clicked", this);
+    // }
+    
   render() {
 
-    console.log('props', this.props);
+    // console.log('props', this.props);  
     return (
       <React.Fragment>
         {/* <h1 style={this.heading}>Counter App!!</h1> */}
         {/* <span class="ml-5">{this.state.count}</span> */}
         <div className="container mt-5">
+        {/* <h4>Counter #{this.props.id}</h4> */}
+        {/* {this.props.children} */}
           <div className="row">
             <div className="col-md-4">
               <span className={this.getBadgeClasses()} style={this.styles}>
@@ -47,7 +47,9 @@ class Counter extends Component {
 
             </div>
             <div className="col-md-4">
-              <button onClick={this.handleIncrement} class="btn btn-md btn-success ml-5">Increment</button>
+              <button onClick={() =>{this.props.onIncrement(this.props.counter)}} className="btn btn-md btn-success ml-5">Increment</button>
+              <button onClick={()=> {this.props.onDelete(this.props.counter.id)}} className="btn btn-md btn-danger ml-5">Delete</button>
+
             </div>
 
             {/* <img class="ml-5" src={this.state.imgUrl}/> */}
@@ -59,14 +61,14 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
+    const { value } = this.props.counter;
     const x = <span>zero</span>;
-    return count === 0 ? x : count;
+    return value === 0 ? x : value;
   }
 
 //   rendertags(){
