@@ -5,6 +5,17 @@ import Counters from './components/counters';
 
 
 class App extends Component {
+  constructor( props){
+    super(props);
+    console.log('App-constructor', this.props);
+  }
+
+  componentDidMount(){
+      //Ajax call
+
+      console.log("component mount");
+  }
+
   state = {
     counters: [
       {
@@ -48,6 +59,14 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleDecrement = counter =>{
+    const counters = [...this.state.counters];
+    let index  = counters.indexOf(counter);
+
+    counters[index].value--;
+    this.setState({counters});
+  };
+
   //reset counter
   handleReset = () => {
     const counters = this.state.counters.map(c => {
@@ -57,11 +76,12 @@ class App extends Component {
     this.setState({ counters });
   };
   render() { 
+    console.log("in render");
     return ( 
       <React.Fragment>
-      <Navbar totalCounters={this.state.counters.length}></Navbar>
+      <Navbar totalCounters={this.state.counters.filter(c => c.value >0).length}></Navbar>
       <main className="container">
-      <Counters onReset={this.handleReset} onIncrement={this.handleIncrement} onDelete={this.handleDelete} counters={this.state.counters}></Counters>
+      <Counters counters={this.state.counters} onReset={this.handleReset} onIncrement={this.handleIncrement} onDelete={this.handleDelete} onDecrement={this.handleDecrement}></Counters>
       </main>
       </React.Fragment>
      );

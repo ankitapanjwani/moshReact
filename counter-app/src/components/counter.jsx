@@ -2,7 +2,17 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   
-
+// componentDidUpdate(prevProps,prevState){
+//   // console.log("in did update");
+//   console.log('prevprops', prevProps);
+//   console.log('prevstate', prevState);
+//   if(prevProps.counter.value !==  this.props.counter.value){
+//     // ajax call
+//   }
+// }
+// componentWillUnmount(){
+//   console.log("counter unmount");
+// }
 
   styles = {
     fontSize: 25,
@@ -28,7 +38,8 @@ class Counter extends Component {
     // }
     
   render() {
-
+    console.log("counter rendereed..");
+const {counter,onDelete,onIncrement,onDecrement} = this.props;
     // console.log('props', this.props);  
     return (
       <React.Fragment>
@@ -47,8 +58,9 @@ class Counter extends Component {
 
             </div>
             <div className="col-md-4">
-              <button onClick={() =>{this.props.onIncrement(this.props.counter)}} className="btn btn-md btn-success ml-5">Increment</button>
-              <button onClick={()=> {this.props.onDelete(this.props.counter.id)}} className="btn btn-md btn-danger ml-5">Delete</button>
+              <button onClick={() =>{onIncrement(counter)}} className="btn btn-md btn-success ml-5">+</button>
+              <button onClick={() =>{onDecrement(counter)}} className="btn btn-md btn-secondary ml-5"  disabled = {counter.value===0 ? "disabled": null}>-</button>
+              <button onClick={()=> {onDelete(counter.id)}} className="btn btn-md btn-danger ml-5">x</button>
 
             </div>
 
