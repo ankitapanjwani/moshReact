@@ -83,6 +83,8 @@ class App extends Component {
       <main className="container">
       <Counters counters={this.state.counters} onReset={this.handleReset} onIncrement={this.handleIncrement} onDelete={this.handleDelete} onDecrement={this.handleDecrement}></Counters>
       </main>
+      {/* <ClassCounter></ClassCounter> */}
+   
       </React.Fragment>
      );
   }
